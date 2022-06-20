@@ -1,0 +1,41 @@
+@model WebMVC.Models.Portifolio
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 style="text-align: center; margin: 2rem;">@ViewData["Title"]</h1>
+
+<h3 style="text-align: center;">Você quer deletar esse projeto do seu portifólio?</h3>
+<div>
+    <div style="margin: 2rem;">
+        <h4>Portifolio</h4>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Descrition)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Descrition)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.LinkProject)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.LinkProject)
+            </dd>
+        </dl>
+        
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="btn first" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
+</div>

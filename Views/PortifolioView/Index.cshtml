@@ -1,0 +1,23 @@
+@model IEnumerable<WebMVC.Models.Portifolio>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Portifólio";
+}
+<h1 style="margin: 2rem; text-align: center;">@ViewData["Title"]</h1>
+<div class="flex" style="margin: 2rem;">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem; margin: 1rem;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </h5>
+                <p class="card-text">
+                    @Html.DisplayFor(modelItem => item.Descrition)
+                </p>
+                <a href=@item.LinkProject target="_blank" class="btn fourth black">Go somewhere</a>
+            </div>
+        </div>
+    }
+</div>

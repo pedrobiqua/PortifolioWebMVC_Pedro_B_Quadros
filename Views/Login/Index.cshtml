@@ -1,0 +1,58 @@
+@model WebMVC.Models.Login
+@{
+    Layout = "_LayoutLoginAdm";
+    ViewData["Title"] = "LoginAdm";
+}
+
+<div class="header">
+    <div>
+        <div class="flex">
+            <form style="margin: 4rem; background-color: #f5f5f5; border-radius: 0.5cm;" asp-controller="Login" asp-action="Entrar" method="post">
+                <p class="fs-4" style="text-align: center; margin-top: 10px; font-family: 'Lato', sans-serif;">Login</p>
+                <div class="mb-6" style="margin: 1rem; text-align: left; font-family: 'Lato', sans-serif;">
+                    <label asp-for="LoginUser" style="color: black;" for="LoginUser" class="form-label">Name : </label>
+                    <input asp-for="LoginUser" type="text" class="form-control" id="LoginUser">
+                </div>
+                <div class="mb-6" style="margin: 1rem; text-align: left; font-family: 'Lato', sans-serif;">
+
+                    <label asp-for="Password" style="color: black;" for="Password" class="form-label">Password : </label>
+                    <input asp-for="Password" type="password" class="form-control" id="Password">
+                </div>
+                <div style="flex-direction: column; justify-content: center; display: flex;">
+                    <input type="submit" value="Entrar" class="btn fourth black" />
+                </div>
+            </form>
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-danger" style="width: 40%;">
+                    <div style="flex-direction: row; justify-content: center;">
+                        @TempData["Message"]
+                    </div>
+                    <div style="flex-direction: column; justify-content: center; display: flex;">
+                        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+                    </div> 
+                </div>
+            }
+        </div>
+        
+    </div>
+    <!--Waves Container-->
+    <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+        </svg>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

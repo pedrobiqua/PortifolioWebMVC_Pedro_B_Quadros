@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "About";
+}
+
+<h1 style="text-align: center;">@ViewData["Title"]</h1>
+
+<div id="teamarea">
+    <div class="container">
+        <div class="row" id="espaço-row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="img/foto_pedro.png" class="card-img-top" alt="Foto 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Pedro Bianchini de Quadros</h5>
+                        <p class="card-text">Estudante de Ciência da computação</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" style="margin: 1rem;">
+                <p>Olá meu nome é Pedro Bianchini de Quadros, estudante de ciência da computação pela PUC-PR.<br></p>
+                <p>A minha cidade natal é Curitiba mas grande parte da minha vida morei na praia em Matinhos-PR. Durante
+                    o ensino médio participei de competições de robótica pelo colégio SESI Paranaguá.<br></p>
+                <p>Atualmente estou com 18 anos e estou no 2 período do curso.</p>
+                <p>English version: <br></p>
+                <p>Hello my name is Pedro Bianchini de Quadros, a science student at PUC-PR.<br></p>
+                <p>My hometown is Curitiba but most of my life I lived in the coast in Matinhos-PR. During high school I
+                    participated in robotics competitions at SESI Paranaguá school.<br></p>
+                <p>I'm 18 years old and I'm in 3 period of the course.</p>
+            </div>
+
+        </div>
+        <div class="container" style="margin: 1rem;">
+            <div class="text-center">
+                <img src="img/robotica.png" class="rounded mx-auto d-block img-fluid" alt="...">
+                <p>Foto de comemoração por ter ganhado os prémios de solução inovadora e estrela iniciante.<br></p>
+                <p>Nessa foto apresenta as equipes Smart Vikings e Krizium do colégio SESI Paranaguá.</p>
+                <br>
+                <p>Clique no botão para ir ao Portfólio</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="flex" style="margin: 1em;">
+    <a class="btn fourth black" style="margin-top: 0px;" asp-area="Home" asp-controller="PortifolioView" asp-action="Index" role="button">Portfólio</a>
+</div>

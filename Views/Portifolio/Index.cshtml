@@ -1,0 +1,50 @@
+@model IEnumerable<WebMVC.Models.Portifolio>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Portifolio";
+}
+
+<h1 style="text-align: center; margin: 2rem;">@ViewData["Title"]</h1>
+<div class="table-responsive">
+    <table class="table table-sm table-dark table-hover" style="margin-left: 1rem; width: 95%;">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descrition)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LinkProject)
+                </th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descrition)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LinkProject)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="flex" style="margin: 1em;">
+    <a class="btn fourth black" asp-action="Create">Nova publicação</a>
+</div>
