@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using WebMVC.Helper;
 using WebMVC.Models;
 
 namespace WebMVC.Controllers
@@ -12,15 +13,21 @@ namespace WebMVC.Controllers
     public class LoginController : Controller
     {
         private readonly WebContext _context;
+        private readonly ISessionUser _session;
 
-        public LoginController(WebContext context)
+        public LoginController(WebContext context, ISessionUser session)
         {
             _context = context;
+            _session = session;
         }
 
         // GET: Login
         public IActionResult Index()
         {
+            if (_session.SeachUserSession() != null)
+            {
+                return RedirectToAction("Index", "Portifolio");
+            }
             return View();
         }
 
@@ -164,6 +171,7 @@ namespace WebMVC.Controllers
                     {
                         if (logado.ValidPassord(login.Password))
                         {
+                            _session.CreateUserSession(logado);
                             return RedirectToAction("Index", "Portifolio");
                         }
                         TempData["Message"] = @"Senha invalida. Tente novamente.";
@@ -206,6 +214,13 @@ namespace WebMVC.Controllers
                 TempData["Message"] = @"Erro ao buscar login";
                 return login;
             }
+        }
+
+        public IActionResult Exit()
+        {
+            _session.RemoveUserSession();
+
+            return RedirectToAction("Index", "Login");
         }
 
         private bool LoginExists(int id)
